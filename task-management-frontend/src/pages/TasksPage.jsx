@@ -67,8 +67,9 @@ const TasksPage = () => {
             await TaskService.createTask(newTask);
             await fetchTasks();
             showToast('Task added!', 'success');
-        } catch {
-            showToast('Failed to add task', 'error');
+        } catch (err) {
+            const errorMsg = err.response?.data?.detail || 'Failed to add task';
+            showToast(errorMsg, 'error');
         }
     };
 
@@ -77,8 +78,9 @@ const TasksPage = () => {
             await TaskService.deleteTask(id);
             setTasks(prev => prev.filter(t => t.id !== id));
             showToast('Task deleted', 'default');
-        } catch {
-            showToast('Failed to delete task', 'error');
+        } catch (err) {
+            const errorMsg = err.response?.data?.detail || 'Failed to delete task';
+            showToast(errorMsg, 'error');
         }
     };
 
@@ -89,7 +91,8 @@ const TasksPage = () => {
             if (updatedTask.status === 'COMPLETED') showToast('Task completed! 🎉', 'success');
             else showToast('Task updated', 'default');
         } catch (err) {
-            showToast('Failed to update task', 'error');
+            const errorMsg = err.response?.data?.detail || 'Failed to update task';
+            showToast(errorMsg, 'error');
             throw err;
         }
     };

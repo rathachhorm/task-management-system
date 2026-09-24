@@ -1,15 +1,14 @@
 package com.ratha.taskmanagementbackend.jwt;
 
-import com.ratha.taskmanagementbackend.model.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
-import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,13 +16,13 @@ import java.util.function.Function;
 
 @Component
 public class JwtService {
-    @org.springframework.beans.factory.annotation.Value("${jwt.secret}")
+    @Value("${jwt.secret}")
     private String secret;
 
-    @org.springframework.beans.factory.annotation.Value("${jwt.expiration}")
+    @Value("${jwt.expiration}")
     private long jwtExpiration;
 
-    @org.springframework.beans.factory.annotation.Value("${jwt.refresh-expiration:604800000}")
+    @Value("${jwt.refresh-expiration:604800000}")
     private long refreshExpiration;
 
     private String createToken(Map<String, Object> claim, String subject, long expiration){

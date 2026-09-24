@@ -18,7 +18,8 @@ const RegisterPage = () => {
             await LoginService.register(name, email, password);
             navigate('/');
         } catch (err) {
-            setError('Something went wrong. Please check your details and try again.');
+            const errorMsg = err.response?.data?.detail || 'Something went wrong. Please check your details and try again.';
+            setError(errorMsg);
             console.error('Register error:', err);
         } finally {
             setLoading(false);

@@ -17,7 +17,8 @@ const LoginPage = () => {
             await LoginService.login(email, password);
             navigate('/');
         } catch (err) {
-            setError('Hmm, that email or password doesn\'t look right. Try again?');
+            const errorMsg = err.response?.data?.detail || 'Hmm, that email or password doesn\'t look right. Try again?';
+            setError(errorMsg);
             console.error('Login error:', err);
         } finally {
             setLoading(false);
