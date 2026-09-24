@@ -26,7 +26,10 @@ const LoginPage = () => {
     };
 
     return (
-        <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
+        <div className={`
+    min-h-screen bg-slate-50 flex items-center
+    justify-center p-4
+`}>
             <div className="w-full max-w-sm">
 
                 {/* Header */}
@@ -48,7 +51,12 @@ const LoginPage = () => {
                                 placeholder="you@example.com"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+                                className={`
+    w-full border border-slate-300 rounded-xl
+    px-4 py-3 text-sm text-slate-800
+    placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-500
+    focus:border-transparent transition-all
+`}
                                 required
                                 autoComplete="email"
                             />
@@ -64,14 +72,23 @@ const LoginPage = () => {
                                 placeholder="Enter your password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                className="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+                                className={`
+    w-full border border-slate-300 rounded-xl
+    px-4 py-3 text-sm text-slate-800
+    placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-500
+    focus:border-transparent transition-all
+`}
                                 required
                                 autoComplete="current-password"
                             />
                         </div>
 
                         {error && (
-                            <div className="flex items-start gap-2.5 p-3.5 bg-red-50 border border-red-100 rounded-xl text-sm text-red-600">
+                            <div className={`
+    flex items-start gap-2.5 p-3.5
+    bg-red-50 border border-red-100 rounded-xl
+    text-sm text-red-600
+`}>
                                 <svg className="w-4 h-4 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                                         d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -84,7 +101,12 @@ const LoginPage = () => {
                             id="login-submit-btn"
                             type="submit"
                             disabled={loading}
-                            className="w-full bg-violet-600 hover:bg-violet-700 active:bg-violet-800 disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold py-3 rounded-xl text-sm transition-all duration-150 shadow-sm shadow-violet-200 mt-1"
+                            className={`
+    w-full bg-violet-600 hover:bg-violet-700 active:bg-violet-800
+    disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold
+    py-3 rounded-xl text-sm transition-all
+    duration-150 shadow-sm shadow-violet-200 mt-1
+`}
                         >
                             {loading ? (
                                 <span className="flex items-center justify-center gap-2">
@@ -100,7 +122,10 @@ const LoginPage = () => {
 
                     <p className="mt-5 text-center text-sm text-slate-500">
                         New here?{' '}
-                        <Link to="/register" className="text-violet-600 font-medium hover:text-violet-700 hover:underline underline-offset-2 transition-colors">
+                        <Link to="/register" className={`
+    text-violet-600 font-medium hover:text-violet-700 hover:underline
+    underline-offset-2 transition-colors
+`}>
                             Create an account
                         </Link>
                     </p>

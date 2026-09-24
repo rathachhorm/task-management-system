@@ -5,11 +5,22 @@ import AddNewTaskComponent from '../components/AddNewTaskComponent.jsx';
 import LoginService from '../services/login.service';
 
 const STATUS_COLUMNS = [
-    { key: 'PENDING',   label: 'Pending',   bg: 'bg-amber-50/50',   border: 'border-amber-200',   count_bg: 'bg-amber-100 text-amber-700' },
-    { key: 'COMPLETED', label: 'Completed', bg: 'bg-emerald-50/50', border: 'border-emerald-200', count_bg: 'bg-emerald-100 text-emerald-700' },
+    { 
+        key: 'PENDING',   
+        label: 'Pending',   
+        bg: 'bg-amber-50/50',   
+        border: 'border-amber-200',   
+        count_bg: 'bg-amber-100 text-amber-700' 
+    },
+    { 
+        key: 'COMPLETED', 
+        label: 'Completed', 
+        bg: 'bg-emerald-50/50', 
+        border: 'border-emerald-200', 
+        count_bg: 'bg-emerald-100 text-emerald-700' 
+    },
 ];
 
-// Simple toast notification component
 const Toast = ({ message, type, onClose }) => {
     useEffect(() => {
         const t = setTimeout(onClose, 3000);
@@ -17,7 +28,13 @@ const Toast = ({ message, type, onClose }) => {
     }, [onClose]);
 
     return (
-        <div className={`fixed bottom-5 right-5 z-50 flex items-center gap-2.5 px-4 py-3 rounded-xl shadow-lg text-sm font-medium text-white transition-all
+        <div className={`
+            fixed bottom-5 right-5 z-50 
+            flex items-center gap-2.5 
+            px-4 py-3 rounded-xl 
+            shadow-lg 
+            text-sm font-medium text-white 
+            transition-all
             ${type === 'success' ? 'bg-emerald-600' : type === 'error' ? 'bg-red-500' : 'bg-slate-700'}`}
         >
             {type === 'success' && (
@@ -88,7 +105,7 @@ const TasksPage = () => {
         try {
             await TaskService.updateTask(id, updatedTask);
             setTasks(prev => prev.map(t => t.id === id ? { ...t, ...updatedTask } : t));
-            if (updatedTask.status === 'COMPLETED') showToast('Task completed! 🎉', 'success');
+            if (updatedTask.status === 'COMPLETED') showToast('Task completed', 'success');
             else showToast('Task updated', 'default');
         } catch (err) {
             const errorMsg = err.response?.data?.detail || 'Failed to update task';
@@ -112,7 +129,7 @@ const TasksPage = () => {
             <div className="flex items-start justify-between mb-6">
                 <div>
                     <h1 className="text-2xl font-bold text-slate-800 tracking-tight">
-                        {firstName ? `Hey, ${firstName} 👋` : 'My Tasks'}
+                        {firstName ? `Hey, ${firstName}` : 'My Tasks'}
                     </h1>
                     <p className="text-slate-500 text-sm mt-0.5">
                         {total === 0
@@ -130,7 +147,11 @@ const TasksPage = () => {
 
             {/* Error */}
             {error && (
-                <div className="mb-5 flex items-center gap-3 p-4 bg-red-50 border border-red-100 rounded-2xl text-sm text-red-600">
+                <div className={`
+    mb-5 flex items-center gap-3
+    p-4 bg-red-50 border border-red-100
+    rounded-2xl text-sm text-red-600
+`}>
                     <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
@@ -141,15 +162,24 @@ const TasksPage = () => {
 
             {/* Loading */}
             {loading && (
-                <div className="flex flex-col items-center justify-center h-52 gap-3 text-slate-400">
-                    <div className="w-7 h-7 border-2 border-violet-500 border-t-transparent rounded-full animate-spin" />
+                <div className={`
+    flex flex-col items-center justify-center
+    h-52 gap-3 text-slate-400
+`}>
+                    <div className={`
+    w-7 h-7 border-2 border-violet-500
+    border-t-transparent rounded-full animate-spin
+`} />
                     <span className="text-sm">Loading your tasks…</span>
                 </div>
             )}
 
             {/* Empty State */}
             {!loading && total === 0 && !error && (
-                <div className="flex flex-col items-center justify-center h-52 gap-3 text-center">
+                <div className={`
+    flex flex-col items-center justify-center
+    h-52 gap-3 text-center
+`}>
                     <div>
                         <p className="text-sm font-semibold text-slate-700">No tasks yet</p>
                         <p className="text-xs text-slate-400 mt-1">Click "Add Task" to create your first one</p>

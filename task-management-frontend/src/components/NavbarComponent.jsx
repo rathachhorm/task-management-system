@@ -12,7 +12,11 @@ const NavbarComponent = () => {
     };
 
     return (
-        <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 shrink-0">
+        <header className={`
+            h-16 bg-white border-b border-slate-200
+            flex items-center justify-between px-6
+            shrink-0
+        `}>
             {/* Left: Brand */}
             <div className="flex items-center gap-2.5">
                 <span className="font-bold text-slate-800 text-sm tracking-tight">Task Management</span>
@@ -26,7 +30,12 @@ const NavbarComponent = () => {
                     </div>
                     <button
                         onClick={handleLogout}
-                        className="flex items-center gap-1.5 text-sm text-slate-500 hover:text-red-500 px-3 py-1.5 rounded-lg hover:bg-red-50 transition-colors border border-transparent hover:border-red-100"
+                        className={`
+                            flex items-center gap-1.5 text-sm
+                            text-slate-500 hover:text-red-500 px-3 py-1.5
+                            rounded-lg hover:bg-red-50 transition-colors border
+                            border-transparent hover:border-red-100
+                        `}
                     >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}

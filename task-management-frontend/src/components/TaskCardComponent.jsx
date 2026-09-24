@@ -90,7 +90,10 @@ const TaskCardComponent = ({ task, onDelete, onStatusChange }) => {
                 {!editing && (
                     <button
                         onClick={() => setEditing(true)}
-                        className="opacity-0 group-hover:opacity-100 transition-opacity p-1 rounded-md hover:bg-slate-100 text-slate-400 hover:text-slate-600"
+                        className={`
+                            opacity-0 group-hover:opacity-100 transition-opacity p-1
+                            rounded-md hover:bg-slate-100 text-slate-400 hover:text-slate-600
+                        `}
                         title="Edit task"
                     >
                         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -110,12 +113,20 @@ const TaskCardComponent = ({ task, onDelete, onStatusChange }) => {
                         value={editTitle}
                         onChange={(e) => setEditTitle(e.target.value)}
                         onKeyDown={(e) => e.key === 'Enter' && handleSaveEdit()}
-                        className="w-full text-sm font-semibold text-slate-800 border border-violet-400 rounded-lg px-2.5 py-1.5 focus:outline-none focus:ring-2 focus:ring-violet-500"
+                        className={`
+                            w-full text-sm font-semibold text-slate-800
+                            border border-violet-400 rounded-lg px-2.5
+                            py-1.5 focus:outline-none focus:ring-2 focus:ring-violet-500
+                        `}
                     />
                     <textarea
                         value={editDesc}
                         onChange={(e) => setEditDesc(e.target.value)}
-                        className="w-full text-xs text-slate-600 border border-slate-300 rounded-lg px-2.5 py-1.5 resize-none focus:outline-none focus:ring-2 focus:ring-violet-400"
+                        className={`
+                            w-full text-xs text-slate-600 border
+                            border-slate-300 rounded-lg px-2.5 py-1.5
+                            resize-none focus:outline-none focus:ring-2 focus:ring-violet-400
+                        `}
                         rows={2}
                         placeholder="Add a description..."
                     />
@@ -123,13 +134,20 @@ const TaskCardComponent = ({ task, onDelete, onStatusChange }) => {
                         <button
                             onClick={handleSaveEdit}
                             disabled={updating || !editTitle.trim()}
-                            className="text-xs bg-violet-600 hover:bg-violet-700 text-white px-3 py-1.5 rounded-lg disabled:opacity-50 font-medium transition-colors"
+                            className={`
+                                text-xs bg-violet-600 hover:bg-violet-700 text-white
+                                px-3 py-1.5 rounded-lg disabled:opacity-50
+                                font-medium transition-colors
+                            `}
                         >
                             {updating ? 'Saving…' : 'Save'}
                         </button>
                         <button
                             onClick={handleCancelEdit}
-                            className="text-xs text-slate-500 hover:text-slate-700 px-3 py-1.5 rounded-lg hover:bg-slate-100 transition-colors"
+                            className={`
+                                text-xs text-slate-500 hover:text-slate-700 px-3
+                                py-1.5 rounded-lg hover:bg-slate-100 transition-colors
+                            `}
                         >
                             Cancel
                         </button>
@@ -148,14 +166,22 @@ const TaskCardComponent = ({ task, onDelete, onStatusChange }) => {
 
             {/* Footer Actions */}
             {!editing && (
-                <div className="flex items-center justify-between mt-3.5 pt-3 border-t border-slate-100">
+                <div className={`
+                    flex items-center justify-between mt-3.5
+                    pt-3 border-t border-slate-100
+                `}>
                     {/* Left: status action */}
                     <div>
                         {isPending ? (
                             <button
                                 onClick={handleMarkComplete}
                                 disabled={updating}
-                                className="flex items-center gap-1 text-xs text-violet-600 hover:text-violet-800 font-medium px-2.5 py-1.5 rounded-lg hover:bg-violet-50 transition-colors disabled:opacity-50"
+                                className={`
+                                    flex items-center gap-1 text-xs
+                                    text-violet-600 hover:text-violet-800 font-medium px-2.5
+                                    py-1.5 rounded-lg hover:bg-violet-50 transition-colors
+                                    disabled:opacity-50
+                                `}
                             >
                                 {updating ? (
                                     <svg className="w-3 h-3 animate-spin" fill="none" viewBox="0 0 24 24">
@@ -170,7 +196,10 @@ const TaskCardComponent = ({ task, onDelete, onStatusChange }) => {
                                 {updating ? 'Updating…' : 'Mark complete'}
                             </button>
                         ) : (
-                            <span className="flex items-center gap-1 text-xs text-emerald-600 font-medium">
+                            <span className={`
+                                flex items-center gap-1 text-xs
+                                text-emerald-600 font-medium
+                            `}>
                                 <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7"/>
                                 </svg>
@@ -183,23 +212,32 @@ const TaskCardComponent = ({ task, onDelete, onStatusChange }) => {
                     {onDelete && !confirmDelete && (
                         <button
                             onClick={() => setConfirmDelete(true)}
-                            className="opacity-0 group-hover:opacity-100 transition-opacity text-xs text-slate-400 hover:text-red-500 px-2 py-1.5 rounded-lg hover:bg-red-50"
+                            className={`
+                                opacity-0 group-hover:opacity-100 transition-opacity text-xs
+                                text-slate-400 hover:text-red-500 px-2 py-1.5
+                                rounded-lg hover:bg-red-50
+                            `}
                         >
                             Delete
                         </button>
                     )}
                     {confirmDelete && (
                         <div className="flex items-center gap-1.5">
-                            <span className="text-xs text-slate-500">Sure?</span>
                             <button
                                 onClick={handleDelete}
-                                className="text-xs bg-red-500 hover:bg-red-600 text-white px-2.5 py-1 rounded-lg transition-colors"
+                                className={`
+                                    text-xs bg-red-500 hover:bg-red-600 text-white
+                                    px-2.5 py-1 rounded-lg transition-colors
+                                `}
                             >
                                 Yes
                             </button>
                             <button
                                 onClick={() => setConfirmDelete(false)}
-                                className="text-xs text-slate-500 hover:text-slate-700 px-2 py-1 rounded-lg hover:bg-slate-100"
+                                className={`
+                                    text-xs text-slate-500 hover:text-slate-700 px-2
+                                    py-1 rounded-lg hover:bg-slate-100
+                                `}
                             >
                                 No
                             </button>
