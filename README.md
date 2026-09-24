@@ -1,6 +1,5 @@
 # Task Management System
 
-## Prerequisites
 - **Java 17+** & **Node.js 18+**
 - **PostgreSQL** running on `localhost:5432`. Create a database named `task_management`.
 
